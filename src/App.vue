@@ -3,7 +3,7 @@
         <div class="lights">
             <span
                 v-for="(e, i) in els"
-                :class="`light light--${color()} light--${blink()} light${i}`"
+                :class="`light light${i} light--${color()} light--${blink()}`"
             />
         </div>
         <div class="branches">
@@ -15,14 +15,14 @@
         <div class="balls">
             <span
                 v-for="(e, i) in balls"
-                :class="`ball ball--${color()} ball${i}`"
+                :class="`ball ball${i} ball--${color()}`"
             />
         </div>
         <div class="stump" />
         <div class="presents">
             <span
                 v-for="(e, i) in presents"
-                :class="`present present--${presentColor()} present${i} ribbon ribbon--${presentColor()} present--${presentShape()}`"
+                :class="`present present${i} present--${presentColor()} present--${presentShape()} ribbon ribbon--${presentColor()}`"
             />
         </div>
         <span class="peak">
@@ -313,8 +313,7 @@ body { .square(29em); overflow: hidden }
 }
 
 .arrow-up(@width; @color: darkgreen) {
-    width: 0;
-    height: 0;
+    .square(0);
 
     border-left: @width solid transparent;
     border-right: @width solid transparent;
@@ -322,8 +321,7 @@ body { .square(29em); overflow: hidden }
 }
 
 .arrow-up(@width; @width2; @color: darkgreen) {
-    width: 0;
-    height: 0;
+    .square(0);
 
     border-left: @width solid transparent;
     border-right: @width solid transparent;
