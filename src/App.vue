@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             nBranches: 6,
-            nLights: 299,
+            nLights: 176,
             nBalls: 21,
             nPresents: 7,
             rand1: this.rand(MAX_BLINK),
@@ -75,6 +75,7 @@ export default {
 </script>
 
 <style lang="less">
+body { .square(29em); overflow: hidden }
 .tree {
     .square(29em);
 
@@ -93,13 +94,15 @@ export default {
     .square(40px; 50px);
 
     background-color: saddlebrown;
-    transform: translateY(-29em) translateX(13em)
+    transform: translateY(21em) translateX(13em);
+    z-index: 4;
 }
 
-.lights   { position: absolute; z-index: 1; top: 30px; left: 7.5px; }
-.balls    { position: absolute; z-index: 2; top: 20px; left: 0;     }
-.presents { position: absolute; z-index: 3; top: 20px; left: 0;     }
-.peak     { position: absolute; z-index: 4; top: 5px;  left: 212px; }
+.branches { .square(0); z-index: 1; }
+.lights   { .square(0); position: absolute; z-index: 2; top: 30px; left: 7.5px; }
+.balls    { .square(0); position: absolute; z-index: 3; top: 20px; left: 0;     }
+.presents { .square(0); position: absolute; z-index: 5; top: 10px; left: 0;     }
+.peak     { .square(0); position: absolute; z-index: 5; top: 5px;  left: 212px; }
 
 @lights-list: {
     0: 222px, 05px;
@@ -272,12 +275,12 @@ export default {
     167: 98px, -541px;
     168: 93px, -538px;
     169: 95px, -534px;
-    171: 100px, -537px;
-    172: 107px, -537px;
-    173: 115px, -543px;
-    174: 122px, -550px;
-    175: 129px, -560px;
-    176: 136px, -570px;
+    170: 100px, -537px;
+    171: 107px, -537px;
+    172: 115px, -543px;
+    173: 122px, -550px;
+    174: 129px, -560px;
+    175: 136px, -570px;
 }
 
 @random-numbers: {
