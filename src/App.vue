@@ -25,6 +25,9 @@
                 :class="`present present--${presentColor()} present${i} ribbon ribbon--${presentColor()} present--${presentShape()}`"
             />
         </div>
+        <span class="peak">
+            <span class="stem" />
+        </span>
     </section>
 </template>
 
@@ -75,6 +78,7 @@ export default {
 .tree {
     .square(29em);
 
+    padding: 20px 0 0 0;
     overflow: hidden;
 }
 
@@ -92,9 +96,10 @@ export default {
     transform: translateY(-29em) translateX(13em)
 }
 
-.lights   { position: absolute; z-index: 1; top: 10px; left: 7.5px; }
-.balls    { position: absolute; z-index: 2; top: 0;    left: 0;     }
-.presents { position: absolute; z-index: 3; top: 0;    left: 0;     }
+.lights   { position: absolute; z-index: 1; top: 30px; left: 7.5px; }
+.balls    { position: absolute; z-index: 2; top: 20px; left: 0;     }
+.presents { position: absolute; z-index: 3; top: 20px; left: 0;     }
+.peak     { position: absolute; z-index: 4; top: 5px;  left: 212px; }
 
 @lights-list: {
     0: 222px, 05px;
@@ -485,47 +490,46 @@ export default {
 }
 .round() { border-radius: 50%; }
 
-.star() {
+.peak { .star(10px); }
+
+.star(@width; @color: gold) {
     .square(0);
+    .arrow-up(@width * 2; @width * 1.4; @color);
 
-    margin: 50px 0;
-    position: relative;
-    color: gold;
-
-    border-right: 100px solid transparent;
-    border-left: 100px solid transparent;
-    border-bottom: 70px solid gold;
-
+    margin: @width 0;
     transform: rotate(35deg);
+
+    &::before, &::after, > .stem {
+        position: absolute;
+        content: '';
+    }
 
     &::before {
         .square(0);
+        .arrow-up(@width * 0.6; @width * 1.6; @color);
 
-        border-left: 30px solid transparent;
-        border-right: 30px solid transparent;
-        border-bottom: 80px solid gold;
-
-        position: absolute;
-        top: -45px;
-        left: -65px;
-        content: '';
+        top: @width * -.9px;
+        left: @width * -1.3px;
         transform: rotate(-35deg);
     }
 
     &::after {
         .square(0);
+        .arrow-up(@width * 2; @width * 1.4; @color);
 
-        position: absolute;
-        color: red;
-        top: 3px;
-        left: -105px;
-
-        border-right: 100px solid transparent;
-        border-left: 100px solid transparent;
-        border-bottom: 70px solid gold;
-
+        top: @width * -.06;
+        left: @width * -2.1px;
         transform: rotate(-70deg);
-        content: '';
+    }
+
+    > .stem {
+        .square(13px; 7px);
+
+        transform: rotate(55deg);
+        left: 0;
+        bottom: -21px;
+
+        background-color: @color;
     }
 }
 </style>
